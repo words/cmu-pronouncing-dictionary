@@ -41,7 +41,7 @@ npm install cmu-pronouncing-dictionary --save
 ## Usage
 
 ```js
-const words = require('..')
+const words = require('cmu-pronouncing-dictionary')
 
 words.length
 // => 133779
@@ -50,7 +50,6 @@ words.phenomenon
 // => 'F AH0 N AA1 M AH0 N AA2 N'
 words.zygote
 // => 'Z AY1 G OW0 T'
-
 ```
 
 ## Tests
@@ -69,7 +68,6 @@ None
 - [code](https://github.com/hapijs/code): assertion library
 - [mocha](https://github.com/mochajs/mocha): simple, flexible, fun test framework
 - [standard](https://github.com/feross/standard): JavaScript Standard Style
-
 
 ## License
 
