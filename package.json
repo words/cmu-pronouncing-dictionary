@@ -1,0 +1,36 @@
+{
+  "name": "cmu-pronouncing-dictionary",
+  "version": "1.0.0",
+  "description": "All the 134,000+ words in the CMU pronouncing dictionary as a simple JSON object",
+  "main": "index.json",
+  "scripts": {
+    "test": "standard --format && mocha",
+    "build": "npm test && node build.js > index.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zeke/npm-pronouncing-dictionary"
+  },
+  "keywords": [
+    "english",
+    "language",
+    "words",
+    "arpabet",
+    "transcription",
+    "spelling",
+    "cmu",
+    "dictionary",
+    "rhyme"
+  ],
+  "author": "zeke",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zeke/npm-pronouncing-dictionary/issues"
+  },
+  "homepage": "https://github.com/zeke/npm-pronouncing-dictionary",
+  "devDependencies": {
+    "code": "^1.4.0",
+    "mocha": "^2.2.5",
+    "standard": "^4.0.1"
+  }
+}
