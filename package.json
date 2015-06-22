@@ -7,10 +7,7 @@
     "test": "standard --format && mocha",
     "build": "npm test && node build.js > index.json"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/zeke/npm-pronouncing-dictionary"
-  },
+  "repository": "zeke/cmu-pronouncing-dictionary",
   "keywords": [
     "english",
     "language",
