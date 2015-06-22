@@ -1,6 +1,6 @@
 {
   "name": "cmu-pronouncing-dictionary",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "All the 134,000+ words in the CMU pronouncing dictionary as a simple JSON object",
   "main": "index.json",
   "scripts": {
