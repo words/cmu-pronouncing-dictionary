@@ -22,9 +22,9 @@
   "author": "zeke",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/zeke/npm-pronouncing-dictionary/issues"
+    "url": "https://github.com/zeke/cmu-pronouncing-dictionary/issues"
   },
-  "homepage": "https://github.com/zeke/npm-pronouncing-dictionary",
+  "homepage": "https://github.com/zeke/cmu-pronouncing-dictionary",
   "devDependencies": {
     "code": "^1.4.0",
     "mocha": "^2.2.5",
