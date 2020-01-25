@@ -1,17 +1,29 @@
 var fs = require('fs')
-var words = {}
+var https = require('https')
+var concat = require('concat-stream')
+var bail = require('bail')
 
-String(fs.readFileSync('cmudict-0.7b.txt'))
-  .split('\n')
-  .filter(function(line) {
-    return line.charAt(0).match(/[a-z]/i)
-  })
-  .forEach(function(line) {
-    var parts = line.split('  ')
+var endpoint =
+  'https://raw.githubusercontent.com/cmusphinx/cmudict/master/cmudict.dict'
 
-    if (parts.length === 2) {
-      words[parts[0].toLowerCase()] = parts[1]
-    }
-  })
+https.request(endpoint, onrequest).end()
 
-fs.writeFileSync('index.json', JSON.stringify(words, null, 2) + '\n')
+function onrequest(res) {
+  res.pipe(concat(onconcat)).on('error', bail)
+}
+
+function onconcat(buf) {
+  var words = {}
+
+  String(buf)
+    .split('\n')
+    .forEach(d => {
+      var space = d.indexOf(' ')
+
+      if (space !== -1) {
+        words[d.slice(0, space)] = d.slice(space + 1)
+      }
+    })
+
+  fs.writeFile('index.json', JSON.stringify(words, null, 2) + '\n', bail)
+}

@@ -11,6 +11,8 @@ The 134,000+ words and their pronunciations in the CMU pronouncing dictionary.
 > It defines a mapping from English words to their North American
 > pronunciations, and is commonly used in speech processing applications.
 
+Crawled from [`cmusphinx/cmudict`][cmudict].
+
 ## Install
 
 [npm][]:
@@ -100,5 +102,7 @@ Those are represented as `$word($counter)`, like so:
 [license]: license
 
 [author]: http://zeke.sikelianos.com
+
+[cmudict]: https://github.com/cmusphinx/cmudict
 
 [arpabet]: https://en.wikipedia.org/wiki/ARPABET
