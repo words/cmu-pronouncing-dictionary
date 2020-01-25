@@ -60,6 +60,23 @@ Yields:
 `Object.<string>` — Map of English words to [ARPABET][] phonetic transcription
 codes.
 
+Note that sometimes there are multiple possible pronunciations.
+Those are represented as `$word($counter)`, like so:
+
+```js
+{
+  // …
+  "unnatural": "AH0 N N AE1 CH ER0 AH0 L",
+  "unnaturally": "AH0 N N AE1 CH ER0 AH0 L IY0",
+  "unnaturally(2)": "AH0 N N AE1 CH ER0 L IY0",
+  "unnaturally(3)": "AH0 N AE1 CH ER0 L IY0",
+  "unnaturally(4)": "AH0 N N AE1 CH R AH0 L IY0",
+  "unnecessarily": "AH0 N N EH1 S AH0 S EH2 R AH0 L IY0",
+  "unnecessary": "AH0 N N EH1 S AH0 S EH2 R IY0",
+  // …
+}
+```
+
 ## License
 
 [ISC][license] © [Zeke Sikelianos][author]
