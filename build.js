@@ -1,20 +1,17 @@
-const fs = require('fs')
+var fs = require('fs')
 var words = {}
 
-fs.readFileSync('cmudict-0.7b.txt', 'utf8')
+String(fs.readFileSync('cmudict-0.7b.txt'))
   .split('\n')
-  // .slice(0,150)
-  .filter(function (line) {
+  .filter(function(line) {
     return line.charAt(0).match(/[a-z]/i)
   })
-  .forEach(function (line) {
-    // var [a,b] = line.split("  ")
+  .forEach(function(line) {
     var parts = line.split('  ')
+
     if (parts.length === 2) {
-      var word = parts[0].toLowerCase()
-      var transcription = parts[1]
-      words[word] = transcription
+      words[parts[0].toLowerCase()] = parts[1]
     }
   })
 
-process.stdout.write(JSON.stringify(words, null, 2))
+fs.writeFileSync('index.json', JSON.stringify(words, null, 2) + '\n')

@@ -1,13 +1,8 @@
 {
   "name": "cmu-pronouncing-dictionary",
   "version": "1.0.3",
-  "description": "All the 134,000+ words in the CMU pronouncing dictionary as a simple JSON object",
-  "main": "index.json",
-  "scripts": {
-    "test": "standard --format && mocha",
-    "build": "npm test && node build.js > index.json"
-  },
-  "repository": "zeke/cmu-pronouncing-dictionary",
+  "description": "The 134,000+ words and their pronunciations in the CMU pronouncing dictionary",
+  "license": "ISC",
   "keywords": [
     "english",
     "language",
@@ -19,15 +14,48 @@
     "dictionary",
     "rhyme"
   ],
-  "author": "zeke",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/zeke/cmu-pronouncing-dictionary/issues"
-  },
-  "homepage": "https://github.com/zeke/cmu-pronouncing-dictionary",
+  "repository": "words/cmu-pronouncing-dictionary",
+  "bugs": "https://github.com/words/cmu-pronouncing-dictionary/issues",
+  "author": "Zeke Sikelianos <zeke@sikelianos.com> (http://zeke.sikelianos.com)",
+  "contributors": [
+    "Zeke Sikelianos <zeke@sikelianos.com> (http://zeke.sikelianos.com)",
+    "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
+  ],
+  "main": "index.json",
+  "files": [
+    "index.json"
+  ],
+  "dependencies": {},
   "devDependencies": {
-    "code": "^1.4.0",
-    "mocha": "^2.2.5",
-    "standard": "^4.0.1"
+    "bail": "^1.0.0",
+    "concat-stream": "^2.0.0",
+    "prettier": "^1.0.0",
+    "remark-cli": "^7.0.0",
+    "remark-preset-wooorm": "^6.0.0",
+    "tape": "^4.0.0",
+    "xo": "^0.25.0"
+  },
+  "scripts": {
+    "generate": "node build",
+    "format": "remark . -qfo && prettier --write \"**/*.js\" && xo --fix",
+    "test-api": "node test",
+    "test": "npm run format && npm run test-api"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "useTabs": false,
+    "singleQuote": true,
+    "bracketSpacing": false,
+    "semi": false,
+    "trailingComma": "none"
+  },
+  "xo": {
+    "prettier": true,
+    "esnext": false
+  },
+  "remarkConfig": {
+    "plugins": [
+      "preset-wooorm"
+    ]
   }
 }
