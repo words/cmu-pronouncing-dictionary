@@ -24,9 +24,9 @@ npm install cmu-pronouncing-dictionary
 ## Use
 
 ```js
-var cmu = require('cmu-pronouncing-dictionary')
+import { dictionary } from 'cmu-pronouncing-dictionary'
 
-console.log(cmu)
+console.log(dictionary)
 ```
 
 Yields:

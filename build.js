@@ -1,29 +1,41 @@
-var fs = require('fs')
-var https = require('https')
-var concat = require('concat-stream')
-var bail = require('bail')
+import {writeFile} from 'node:fs'
+import {request} from 'node:https'
+import concat from 'concat-stream'
+import {bail} from 'bail'
 
-var endpoint =
+const endpoint =
   'https://raw.githubusercontent.com/cmusphinx/cmudict/master/cmudict.dict'
 
-https.request(endpoint, onrequest).end()
+request(endpoint, onrequest).end()
 
-function onrequest(res) {
-  res.pipe(concat(onconcat)).on('error', bail)
+/**
+ *
+ * @param {import("http").IncomingMessage} response
+ */
+function onrequest(response) {
+  response.pipe(concat(onconcat)).on('error', bail)
 }
 
-function onconcat(buf) {
-  var words = {}
+/**
+ *
+ * @param {Buffer} buffer
+ */
+function onconcat(buffer) {
+  const words = {}
 
-  String(buf)
-    .split('\n')
-    .forEach(d => {
-      var space = d.indexOf(' ')
+  for (const d of String(buffer).split('\n')) {
+    const space = d.indexOf(' ')
 
-      if (space !== -1) {
-        words[d.slice(0, space)] = d.slice(space + 1)
-      }
-    })
+    if (space !== -1) {
+      words[d.slice(0, space)] = d.slice(space + 1)
+    }
+  }
 
-  fs.writeFile('index.json', JSON.stringify(words, null, 2) + '\n', bail)
+  writeFile(
+    'index.js',
+    '/** @type {{ [word: string]: string }} */\nexport const dictionary = ' +
+      JSON.stringify(words, null, 2) +
+      '\n',
+    bail
+  )
 }
