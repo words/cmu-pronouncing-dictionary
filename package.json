@@ -34,8 +34,8 @@
     "bail": "^2.0.0",
     "concat-stream": "^2.0.0",
     "prettier": "^2.0.0",
-    "remark-cli": "^7.0.0",
-    "remark-preset-wooorm": "^6.0.0",
+    "remark-cli": "^9.0.0",
+    "remark-preset-wooorm": "^8.0.0",
     "rimraf": "^3.0.2",
     "tape": "^5.2.2",
     "type-coverage": "^2.0.0",
@@ -44,7 +44,7 @@
   },
   "scripts": {
     "generate": "node build",
-    "format": "remark . -qfo && prettier --write \"**/*.js\" && xo --fix --ignore index.js",
+    "format": "remark . -qfo && prettier -w --loglevel warn && xo --fix --ignore index.js",
     "test-api": "node test",
     "test-types": "rimraf \"*.d.ts\" && tsc && type-coverage",
     "test": "npm run format && npm run test-api",
@@ -59,8 +59,7 @@
     "trailingComma": "none"
   },
   "xo": {
-    "prettier": true,
-    "esnext": false
+    "prettier": true
   },
   "remarkConfig": {
     "plugins": [
