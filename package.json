@@ -44,10 +44,10 @@
   },
   "scripts": {
     "generate": "node build",
-    "format": "remark . -qfo && prettier -w --loglevel warn && xo --fix --ignore index.js",
+    "format": "remark . -qfo && prettier . -w --loglevel warn && xo --fix",
     "test-api": "node test",
     "test-types": "rimraf \"*.d.ts\" && tsc && type-coverage",
-    "test": "npm run format && npm run test-api",
+    "test": "npm run format && npm run test-api && npm run test-types",
     "prepublishOnly": "npm run generate && npm run test"
   },
   "prettier": {
@@ -59,7 +59,10 @@
     "trailingComma": "none"
   },
   "xo": {
-    "prettier": true
+    "prettier": true,
+    "ignore": [
+      "index.js"
+    ]
   },
   "remarkConfig": {
     "plugins": [
