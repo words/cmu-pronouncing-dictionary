@@ -15,6 +15,9 @@ Crawled from [`cmusphinx/cmudict`][cmudict].
 
 ## Install
 
+This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c):
+Node 12+ is needed to use it and it must be `import`ed instead of `require`d.
+
 [npm][]:
 
 ```sh
@@ -24,9 +27,9 @@ npm install cmu-pronouncing-dictionary
 ## Use
 
 ```js
-var cmu = require('cmu-pronouncing-dictionary')
+import { dictionary } from 'cmu-pronouncing-dictionary'
 
-console.log(cmu)
+console.log(dictionary)
 ```
 
 Yields:
@@ -57,7 +60,10 @@ Yields:
 
 ## API
 
-### `cmuPronouncingDictionary`
+This package exports the following identifiers: `dictionary`.
+There is no default export.
+
+### `dictionary`
 
 `Object.<string>` — Map of English words to [ARPABET][] phonetic transcription
 codes.
