@@ -22,11 +22,16 @@
     "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)",
     "Christian Murphy <christian.murphy.42@gmail.com>"
   ],
+  "exports": {
+    "import": "./index.js",
+    "require": "./index.cjs"
+  },
   "type": "module",
   "main": "index.js",
   "types": "index.d.ts",
   "files": [
     "index.js",
+    "index.cjs",
     "index.d.ts"
   ],
   "devDependencies": {
@@ -61,7 +66,8 @@
   "xo": {
     "prettier": true,
     "ignore": [
-      "index.js"
+      "index.js",
+      "index.cjs"
     ]
   },
   "remarkConfig": {

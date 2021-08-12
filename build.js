@@ -31,11 +31,21 @@ function onconcat(buffer) {
     }
   }
 
+  const wordsJson = JSON.stringify(words, null, 2)
+
   writeFile(
     'index.js',
     '/** @type {{ [word: string]: string }} */\nexport const dictionary = ' +
-      JSON.stringify(words, null, 2) +
+      wordsJson +
       '\n',
+    bail
+  )
+
+  writeFile(
+    'index.cjs',
+    'const dictionary = ' +
+      wordsJson +
+      '\n/** @type {{ [word: string]: string }} */\nmodule.exports = {dictionary}',
     bail
   )
 }
